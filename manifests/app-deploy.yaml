@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chess-deployment
+spec:
+  replicas: 2 # You can adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: chess
+  template:
+    metadata:
+      labels:
+        app: chess
+    spec:
+      containers:
+        - name: chess
+          image: yash5090/chess:latest # Replace with the actual image tag
+          ports:
+            - containerPort: 5000 # Replace with the port your Tetris game listens on
